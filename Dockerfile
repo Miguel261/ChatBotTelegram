@@ -1,7 +1,7 @@
 # ===============================
 # Etapa base
 # ===============================
-FROM node:18-alpine
+FROM node:18-bullseye
 
 # Crear directorio de trabajo
 WORKDIR /app
