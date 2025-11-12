@@ -2,9 +2,13 @@ FROM node:18-slim
 
 WORKDIR /app
 
+# Copiar dependencias
 COPY package*.json ./
-RUN npm ci --omit=dev || npm install --omit=dev
 
+# Instalar dependencias (sin dev)
+RUN npm install --omit=dev && npm list --depth=0
+
+# Copiar el resto del código
 COPY . .
 
 ENV NODE_ENV=production

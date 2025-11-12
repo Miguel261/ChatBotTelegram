@@ -1,13 +1,11 @@
 version: '3.9'
-
 services:
-  telegram-bot:
+  bot:
     build: .
     container_name: telegram-bot
-    restart: always
-    environment:
-      - BOT_TOKEN=${BOT_TOKEN}
-      - TZ=America/Mexico_City
+    restart: unless-stopped
     volumes:
       - .:/app
+    environment:
+      - NODE_ENV=production
     command: ["node", "main.js"]
